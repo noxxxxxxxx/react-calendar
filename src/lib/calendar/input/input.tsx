@@ -1,4 +1,4 @@
-import { InputProps } from '@/lib/calendar/type'
+import { InputProps } from '@/index.d'
 import dayjs from 'dayjs'
 import { ChangeEvent, FC, KeyboardEvent, MouseEvent, useEffect, useState } from 'react'
 import { callHandler, formatDate } from '../helper'

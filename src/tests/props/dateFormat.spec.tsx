@@ -55,6 +55,6 @@ describe('dateFormat', () => {
     const value = container.querySelector('input')!.value
     const result = dayjs().format(DateTimeFormat)
 
-    expect(new Date(value).getTime()).toBeGreaterThanOrEqual(new Date(result).getTime())
+    expect(new Date(value).getTime()).toBeLessThanOrEqual(new Date(result).getTime())
   })
 })

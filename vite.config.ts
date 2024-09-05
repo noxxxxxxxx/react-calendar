@@ -3,7 +3,6 @@
 import react from '@vitejs/plugin-react'
 import path, { resolve } from 'path'
 import { defineConfig } from 'vite'
-import copyFiles from 'vite-plugin-copy-files'
 import packageJson from './package.json'
 
 const externals = [...Object.keys(packageJson.peerDependencies), 'react/jsx-runtime']
@@ -24,12 +23,7 @@ export default defineConfig({
       exclude: ['**/type.ts'],
     },
   },
-  plugins: [
-    react(),
-    copyFiles({
-      include: ['src/lib/index.d.ts'],
-    }),
-  ],
+  plugins: [react()],
   build: {
     lib: {
       name: 'react-calendar',
