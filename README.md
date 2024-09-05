@@ -1,9 +1,6 @@
 <div align="center">
-   <a href="https://github.com/noxxxxxxxx/calendar" target="_blank">
-    <img alt="Calendar Logo" width="200" src=""/>
-  </a>
   <a href="https://github.com/noxxxxxxxx/calendar" target="_blank">
-    <img alt="Calendar Logo" width="200" src=""/>
+    <img alt="Calendar Logo" width="200" src="https://github.com/noxxxxxxxx/calendar/blob/main/public/calendar.svg"/>
   </a>
 </div>
 
