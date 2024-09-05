@@ -8,6 +8,16 @@
   <h1>React Calendar</h1>
 </div>
 
+<div align="center">
+<img alt="NPM Version" src="https://img.shields.io/npm/v/rc-calendar-picker">
+<img alt="NPM dev or peer Dependency Version" src="https://img.shields.io/npm/dependency-version/rc-calendar-picker/peer/react">
+<img alt="npm package minimized gzipped size" src="https://img.shields.io/bundlejs/size/rc-calendar-picker">
+<img alt="NPM Downloads" src="https://img.shields.io/npm/dm/rc-calendar-picker">
+<a href="https://codecov.io/github/noxxxxxxxx/calendar" > 
+ <img src="https://codecov.io/github/noxxxxxxxx/calendar/graph/badge.svg?token=46941XHOAN"/> 
+</a>
+</div>
+
 A lightweight but complete calendar picker react component.
 
 ## API
