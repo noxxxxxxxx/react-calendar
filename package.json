@@ -16,8 +16,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/react-calendar.js",
-      "require": "./dist/react-calendar.umd.cjs"
+      "import": "./dist/rc-calendar-picker.js",
+      "require": "./dist/rc-calendar-picker.umd.cjs"
     },
     "./style.css": "./dist/style.css",
     "./package.json": "./package.json"
