@@ -1,6 +1,6 @@
-import { ViewMode, WraperProps, YearProps } from '@/index.d'
+import ViewNavigation from '@/lib/calendar/parts/navigation'
+import { ViewMode, WraperProps, YearProps } from '@/lib/calendar/type'
 import { FC, MouseEvent, ReactNode } from 'react'
-import ViewNavigation from '../../parts/navigation'
 
 export const Year: FC<YearProps> = (props) => {
   const { renderYear, navigate, showView, viewDate, selectedDate, updateDate, isValidDate } = props

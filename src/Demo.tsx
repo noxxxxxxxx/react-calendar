@@ -4,8 +4,9 @@ import dayOfYear from 'dayjs/plugin/dayOfYear'
 import localeData from 'dayjs/plugin/localeData'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import utc from 'dayjs/plugin/utc'
-import { ViewMode } from './index.d'
 import { Calendar } from './lib'
+import { ViewMode } from './lib/calendar/type'
+// import { ViewMode } from './types'
 // import { Calendar, ViewMode } from './react-canendar.js'
 dayjs.extend(utc)
 dayjs.extend(localeData)

@@ -1,4 +1,4 @@
-import { TimeConstraintsType, ViewMode } from '@/index.d'
+import { TimeConstraintsType, ViewMode } from '@/lib/calendar/type'
 
 export const ViewToMethod: Record<string, string> = {
   [ViewMode.Day]: 'date',

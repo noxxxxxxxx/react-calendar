@@ -15,7 +15,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "moduleDetection": "force",
-    "noEmit": true,
+    // "noEmit": true,
     "jsx": "react-jsx",
 
     /* Linting */
@@ -27,7 +27,11 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["vitest/globals"]
+    "types": ["vitest/globals"],
+    "declaration": true, // 启用.d.ts文件的生成
+    "declarationMap": true, // 生成.d.ts文件的source map，可选
+    "outDir": "./dist", // 指定生成的.d.ts文件的存放目录
+    "emitDeclarationOnly": true // 仅生成.d.ts文件，不生成.js文
   },
-  "include": ["src/**/*.ts", "src/**/*.tsx"]
+  "include": ["src/**/*"]
 }

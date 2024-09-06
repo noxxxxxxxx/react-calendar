@@ -1,7 +1,7 @@
-import { InputProps } from '@/index.d'
+import { callHandler, formatDate } from '@/lib/calendar/helper'
+import { InputProps } from '@/lib/calendar/type'
 import dayjs from 'dayjs'
 import { ChangeEvent, FC, KeyboardEvent, MouseEvent, useEffect, useState } from 'react'
-import { callHandler, formatDate } from '../helper'
 
 export const Input: FC<InputProps> = (props) => {
   const {

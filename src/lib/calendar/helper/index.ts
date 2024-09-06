@@ -1,9 +1,8 @@
-import { TimeConstraintsType } from '@/index.d'
+import { DateFormat, timeConstraints, TimeFormat } from '@/lib/calendar/constant'
+import { TimeConstraintsType } from '@/lib/calendar/type'
 import type { Dayjs, InstanceLocaleDataReturn } from 'dayjs'
 import dayjs from 'dayjs'
 import { ChangeEvent, KeyboardEvent, MouseEvent, ReactNode } from 'react'
-import { DateFormat, timeConstraints, TimeFormat } from '../constant'
-// import { TimeConstraintsType } from '../type'
 
 export const pad = (type: string, value: number) => {
   const padValues: Record<string, number> = {

@@ -4,18 +4,22 @@
   "type": "module",
   "files": [
     "README.md",
-    "dist"
+    "dist",
+    "LICENCE",
+    "package.json",
+    "index.d.ts"
   ],
-  "typings": "./src/index.d.ts",
-  "main": "./dist/react-calendar.umd.cjs",
-  "module": "./dist/react-calendar.js",
+  "author": "noxxxx <brooks2harry@gmail.com>",
+  "typings": "./dist/index.d.ts",
+  "main": "./dist/rc-calendar-picker.umd.cjs",
+  "module": "./dist/rc-calendar-picker.js",
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
       "import": "./dist/react-calendar.js",
       "require": "./dist/react-calendar.umd.cjs"
     },
-    "./dist/style.css": "./dist/style.css",
+    "./style.css": "./dist/style.css",
     "./package.json": "./package.json"
   },
   "homepage": "https://github.com/noxxxxxxxx/calendar",
@@ -26,9 +30,13 @@
   "keywords": [
     "calendar-component",
     "react-calendar",
+    "rc-calendar-picker",
     "datetime",
     "react"
   ],
+  "bugs": {
+    "url": "https://github.com/noxxxxxxxx/calendar/issues"
+  },
   "scripts": {
     "dev": "vite",
     "test": "vitest",
@@ -36,7 +44,7 @@
     "build": "tsc -b && vite build && npm run ts",
     "lint": "tsc -b && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "ts": "cp src/index.d.ts dist/index.d.ts && rm dist/calendar.svg"
+    "ts": "tsc && rm dist/calendar.svg"
   },
   "peerDependencies": {
     "dayjs": "^1.11.12",
@@ -79,6 +87,8 @@
     "stylelint-declaration-block-no-ignored-properties": "^2.8.0",
     "typescript": "^5.5.4",
     "vite": "^5.4.3",
+    "vite-plugin-checker": "^0.8.0",
+    "vite-plugin-dts": "^4.1.0",
     "vitest": "^2.0.5"
   },
   "license": "MIT"

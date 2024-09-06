@@ -1,8 +1,8 @@
-import { TimeConstraintsKeys, TimeConstraintsType, TimeProps, ViewMode } from '@/index.d'
+import { createConstraints, getAMPM, getDateFormat, getTimeParts, isAMPM, pad } from '@/lib/calendar/helper'
+import { TimeConstraintsKeys, TimeConstraintsType, TimeProps, ViewMode } from '@/lib/calendar/type'
 import { UnitTypeLong } from 'dayjs'
 import { FC, Fragment, MouseEvent } from 'react'
 import { useImmer } from 'use-immer'
-import { createConstraints, getAMPM, getDateFormat, getTimeParts, isAMPM, pad } from '../../helper'
 
 export const Time: FC<TimeProps> = (props) => {
   const { selectedDate, viewDate, setTime, timeFormat, dateFormat, timeLimit, showView, timeConstraints } = props

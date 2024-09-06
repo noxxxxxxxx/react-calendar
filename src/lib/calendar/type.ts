@@ -3,7 +3,6 @@ declare module '*.scss'
 import { Dayjs, UnitTypeLong } from 'dayjs'
 import { MouseEvent, ReactNode } from 'react'
 
-// declare namespace reactCalendar {
 export enum Mode {
   StartDate = 'startDate',
   EndDate = 'endDate',
@@ -65,7 +64,7 @@ export type State = {
   ready: boolean
 }
 
-interface props {
+export interface props {
   [key: string]: unknown
 }
 
@@ -174,4 +173,3 @@ export interface InputProps {
   onInputChange?: (value: Dayjs | string) => void
   closeCalendar: () => void
 }
-// }

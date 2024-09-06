@@ -1,6 +1,6 @@
 <div align="center">
   <a href="https://github.com/noxxxxxxxx/calendar" target="_blank">
-    <img alt="Calendar Logo" width="200" src="https://github.com/noxxxxxxxx/calendar/blob/main/public/calendar.svg"/>
+    <img alt="Calendar Logo" width="150" src="https://github.com/noxxxxxxxx/calendar/blob/main/public/calendar.svg"/>
   </a>
 </div>
 
@@ -43,6 +43,8 @@ A lightweight but complete calendar picker react component.
 | dateFormat          | `boolean` or `string`  | `true`                                          | Defines the format for the date. It accepts any dayjs time format. If true the date will be displayed using the defaults for the current locale. If false the datepicker is disabled and the component can be used as timepicker.                                                                                                                                                                       |
 | timeFormat          | `boolean` or `string`  | `true`                                          | Defines the format for the time. It accepts any dayjs time format. If true the time will be displayed using the defaults for the current locale. If false the timepicker is disabled and the component can be used as datepicker.                                                                                                                                                                       |
 | closeOnClickOutside | `boolean`              | `true`                                          | When the calendar is open and closeOnClickOutside is true (its default value), clickin outside of the calendar or input closes the calendar. If false the calendar stays open.                                                                                                                                                                                                                          |
+
+## How to use
 
 ## Develop
 
