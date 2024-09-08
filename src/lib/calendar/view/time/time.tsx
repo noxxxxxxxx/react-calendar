@@ -1,15 +1,14 @@
 import { createConstraints, getAMPM, getDateFormat, getTimeParts, isAMPM, pad } from '@/lib/calendar/helper'
 import { TimeConstraintsKeys, TimeConstraintsType, TimeProps, ViewMode } from '@/lib/calendar/type'
 import { UnitTypeLong } from 'dayjs'
-import { FC, Fragment, MouseEvent } from 'react'
-import { useImmer } from 'use-immer'
+import { FC, Fragment, MouseEvent, useState } from 'react'
 
 export const Time: FC<TimeProps> = (props) => {
   const { selectedDate, viewDate, setTime, timeFormat, dateFormat, timeLimit, showView, timeConstraints } = props
 
   const timeConfig = createConstraints(timeConstraints) // user config time limit
 
-  const [timeParts, updateTimeParts] = useImmer<Record<TimeConstraintsKeys, string>>(getTimeParts(viewDate))
+  const [timeParts, updateTimeParts] = useState<Record<TimeConstraintsKeys, string>>(getTimeParts(viewDate))
 
   const getCounters = () => {
     const counters: TimeConstraintsKeys[] = []
@@ -62,9 +61,10 @@ export const Time: FC<TimeProps> = (props) => {
     } else {
       hours += 12
     }
-    updateTimeParts((draft) => {
-      draft.hour = pad('hour', hours)
-      draft.ampm = draft.ampm === 'am' ? 'pm' : 'am'
+    updateTimeParts({
+      ...timeParts,
+      hour: pad('hour', hours),
+      ampm: timeParts.ampm === 'am' ? 'pm' : 'am',
     })
     setTime?.('hour', parseInt(String(hours), 10))
   }
@@ -93,8 +93,9 @@ export const Time: FC<TimeProps> = (props) => {
     if (type === 'ampm') return toggleDayPart()
 
     const value = action === 'increase' ? increase(type) : decrease(type)
-    updateTimeParts((draft) => {
-      draft[type as keyof typeof timeParts] = value
+    updateTimeParts({
+      ...timeParts,
+      [type as keyof typeof timeParts]: value,
     })
     setTime?.(type as UnitTypeLong, parseInt(value, 10))
   }

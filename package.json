@@ -48,10 +48,8 @@
   },
   "peerDependencies": {
     "dayjs": "^1.11.12",
-    "immer": "^10.1.1",
     "react": ">=18.0.0",
-    "react-dom": ">=18.0.0",
-    "use-immer": "^0.10.0"
+    "react-dom": ">=18.0.0"
   },
   "dependencies": {
     "react": "^18.3.1",

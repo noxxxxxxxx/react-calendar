@@ -1,4 +1,4 @@
-import { NextView, timeConstraints, ViewToMethod } from '@/lib/calendar/constant'
+import { NextView, TimeConstraints, ViewToMethod } from '@/lib/calendar/constant'
 import { formatDate, getDateFormat, getLocalDate, getTimeFormat } from '@/lib/calendar/helper'
 import useClickOutside from '@/lib/calendar/helper/useClickoutside'
 import { Input } from '@/lib/calendar/input'
@@ -10,8 +10,7 @@ import { Time } from '@/lib/calendar/view/time/time'
 import { Year } from '@/lib/calendar/view/year/year'
 import type { Dayjs, ManipulateType, UnitTypeLong } from 'dayjs'
 import dayjs from 'dayjs'
-import { FC, MouseEvent, useEffect, useRef } from 'react'
-import { useImmer } from 'use-immer'
+import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
 
 export const Calendar: FC<Props> = (props) => {
   const {
@@ -42,7 +41,7 @@ export const Calendar: FC<Props> = (props) => {
     onNavigateBack,
   } = props
 
-  const [state, updateState] = useImmer<State>({
+  const [state, setState] = useState<State>({
     open: open ?? false,
     selectedDate: dayjs(formatDate(value || initialValue, timezoneOffset, dateFormat, timeFormat)),
     inputValue: undefined,
@@ -79,19 +78,24 @@ export const Calendar: FC<Props> = (props) => {
   const openCalendar = () => {
     if (isOpen()) return
 
-    updateState((draft) => {
-      draft.open = true
+    setState({
+      ...state,
+      open: true,
     })
     onOpen?.()
   }
 
-  const closeCalendar = () => {
+  const closeCalendar = (data?: State) => {
     if (!isOpen()) return
 
-    updateState((draft) => {
-      draft.open = false
-    })
-    onClose?.(state.selectedDate)
+    const result = {
+      ...state,
+      ...(data ?? {}),
+      open: false,
+    }
+
+    setState(result)
+    onClose?.(result.selectedDate)
   }
 
   const _showView = (nextView: ViewMode, date: Dayjs) => {
@@ -99,48 +103,51 @@ export const Calendar: FC<Props> = (props) => {
     const nextViewMode = onBeforeNavigate?.(nextView, state.currentView, d)
     const next = nextViewMode ?? nextView
     onNavigate?.(next)
-    updateState((draft) => {
-      draft.currentView = next
+    setState({
+      ...state,
+      currentView: next,
     })
   }
 
   const updateDate = (e: MouseEvent) => {
-    const target = e.target as HTMLElement
-    if (target) {
+    const t = e.target as HTMLElement
+    if (t) {
       const currentView = state.currentView
       let viewDate: Dayjs
-      const value = Number(target.dataset.value)
-      const year = Number(target.dataset.year)
-      const month = Number(target.dataset.month)
+      const value = Number(t.dataset.value)
+      const year = Number(t.dataset.year)
+      const month = Number(t.dataset.month)
+      const target: any = {}
 
       if (currentView === ViewMode.Day) {
         viewDate = state.viewDate.clone().year(year).month(month).date(value).hour(state.viewDate.hour())
-        updateState((draft) => {
-          draft.selectedDate = viewDate.clone()
-        })
+        target.selectedDate = viewDate.clone()
       } else {
         const key = ViewToMethod[currentView]
         // @ts-expect-error ts defination
         viewDate = state.viewDate[key](value)
       }
 
-      const result = viewDate.clone()
-      updateState((draft) => {
-        draft.viewDate = result
-      })
-      onChange?.(result)
+      target.viewDate = viewDate.clone()
+      onChange?.(target.viewDate)
 
       // close immediately when select date
       if (currentView === viewMode || (closeOnSelect && viewMode === undefined && currentView === ViewMode.Day)) {
-        updateState((draft) => {
-          draft.selectedDate = viewDate.clone()
-        })
-        closeCalendar()
+        target.selectedDate = viewDate.clone()
+        const newState = {
+          ...state,
+          ...target,
+        }
+        setState(newState)
+
+        closeCalendar(newState)
         return
       }
 
-      updateState((draft) => {
-        draft.currentView = NextView[currentView]
+      target.currentView = NextView[currentView]
+      setState({
+        ...state,
+        ...target,
       })
     }
   }
@@ -154,8 +161,9 @@ export const Calendar: FC<Props> = (props) => {
     const navigateTo = modifier > 0 ? onNavigateForward : onNavigateBack
     navigateTo?.(modifier, unit)
 
-    updateState((draft) => {
-      draft.viewDate = viewDate
+    setState({
+      ...state,
+      viewDate,
     })
   }
 
@@ -164,11 +172,11 @@ export const Calendar: FC<Props> = (props) => {
 
     if (date) {
       date = date[type](v)
-      updateState((draft) => {
-        if (date) {
-          draft.selectedDate = date
-          draft.viewDate = date?.clone()
-        }
+
+      setState({
+        ...state,
+        selectedDate: date,
+        viewDate: date.clone(),
       })
       onChange?.(date)
     }
@@ -191,7 +199,7 @@ export const Calendar: FC<Props> = (props) => {
       setTime,
       dateFormat: getDateFormat(dateFormat),
       timeFormat: getTimeFormat(timeFormat),
-      timeConstraints,
+      timeConstraints: TimeConstraints,
       timeLimit,
       showTime,
     }
@@ -219,14 +227,16 @@ export const Calendar: FC<Props> = (props) => {
   useEffect(() => {
     if (value) {
       const selectedDate = dayjs(formatDate(value, timezoneOffset, dateFormat, timeFormat))
-      updateState((draft) => {
-        draft.selectedDate = selectedDate
-        draft.viewDate = selectedDate.clone()
-        draft.ready = true
+      setState({
+        ...state,
+        selectedDate,
+        viewDate: selectedDate.clone(),
+        ready: true,
       })
     } else {
-      updateState((draft) => {
-        draft.ready = true
+      setState({
+        ...state,
+        ready: true,
       })
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -250,6 +260,7 @@ export const Calendar: FC<Props> = (props) => {
         timezoneOffset={timezoneOffset}
         onInputChange={onChange}
       />
+      <>{JSON.stringify(state.selectedDate)}</>
       <div
         className="nc-picker"
         onClick={(e) => e.stopPropagation()}

@@ -5,7 +5,6 @@ import localeData from 'dayjs/plugin/localeData'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import utc from 'dayjs/plugin/utc'
 import { Calendar } from './lib'
-import { ViewMode } from './lib/calendar/type'
 // import { ViewMode } from './types'
 // import { Calendar, ViewMode } from './react-canendar.js'
 dayjs.extend(utc)
@@ -18,13 +17,15 @@ dayjs.locale('zh-CN')
 function Demo() {
   return (
     <Calendar
+      onChange={(v) => console.log(v)}
+      onClose={(v) => console.log(v, 'close')}
       // onBeforeNavigate={(nextView: ViewMode, currentView: ViewMode, viewDate: Dayjs) => {
       //   console.log(nextView, currentView, viewDate)
 
       //   return ViewMode.Year
       // }}
-      initialViewMode={ViewMode.Year}
-      onNavigate={(e) => console.log(e)}
+      // initialViewMode={ViewMode.Year}
+      // onNavigate={(e) => console.log(e)}
     />
   )
 }

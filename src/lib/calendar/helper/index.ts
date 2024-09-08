@@ -1,4 +1,4 @@
-import { DateFormat, timeConstraints, TimeFormat } from '@/lib/calendar/constant'
+import { DateFormat, TimeConstraints, TimeFormat } from '@/lib/calendar/constant'
 import { TimeConstraintsType } from '@/lib/calendar/type'
 import type { Dayjs, InstanceLocaleDataReturn } from 'dayjs'
 import dayjs from 'dayjs'
@@ -40,11 +40,11 @@ export const getTimeParts = (date?: Dayjs) => {
 }
 
 export const createConstraints = (overrideTimeConstraints?: TimeConstraintsType) => {
-  const constraints: TimeConstraintsType = timeConstraints
+  const constraints: TimeConstraintsType = TimeConstraints
 
-  Object.keys(timeConstraints).forEach((type) => {
+  Object.keys(TimeConstraints).forEach((type) => {
     constraints[type as keyof TimeConstraintsType] = {
-      ...timeConstraints[type as keyof TimeConstraintsType],
+      ...TimeConstraints[type as keyof TimeConstraintsType],
       ...(overrideTimeConstraints?.[type as keyof TimeConstraintsType] || {}),
     }
   })
@@ -138,6 +138,8 @@ export const getRow = (rows: ReactNode[][], year: number) => {
 export const isAMPM = (date: Dayjs | undefined, timeFormat?: string | boolean) => {
   if (!date) return false
   const result = dayjs(date).format(getTimeFormat(timeFormat)).toLowerCase()
+  console.log(result, '//////////', dayjs(date).format())
+
   return result.indexOf('am') !== -1 || result.indexOf('pm') !== -1
 }
 

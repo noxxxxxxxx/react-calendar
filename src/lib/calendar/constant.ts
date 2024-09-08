@@ -12,7 +12,7 @@ export const NextView: Record<string, ViewMode> = {
   [ViewMode.Year]: ViewMode.Month,
 }
 
-export const timeConstraints: TimeConstraintsType = {
+export const TimeConstraints: TimeConstraintsType = {
   hour: {
     min: 0,
     max: 23,
