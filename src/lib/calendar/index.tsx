@@ -12,7 +12,7 @@ import type { Dayjs, ManipulateType, UnitTypeLong } from 'dayjs'
 import dayjs from 'dayjs'
 import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
 
-export const Calendar: FC<Props> = (props) => {
+const Calendar: FC<Props> = (props) => {
   const {
     value,
     initialValue,
@@ -239,6 +239,7 @@ export const Calendar: FC<Props> = (props) => {
         ready: true,
       })
     }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, timezoneOffset, dateFormat, timeFormat])
 
@@ -269,3 +270,5 @@ export const Calendar: FC<Props> = (props) => {
     </div>
   )
 }
+
+export default Calendar

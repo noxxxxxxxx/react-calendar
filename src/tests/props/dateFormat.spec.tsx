@@ -3,7 +3,7 @@ import '@testing-library/jest-dom'
 import { fireEvent, render } from '@testing-library/react'
 import dayjs from 'dayjs'
 import { describe, expect, it } from 'vitest'
-import { Calendar } from '../../lib'
+import Calendar from '../../lib'
 import '../entry'
 
 describe('dateFormat', () => {

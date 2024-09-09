@@ -1,7 +1,7 @@
 import '@testing-library/jest-dom'
 import { render } from '@testing-library/react'
 import { describe, expect, it } from 'vitest'
-import { Calendar } from '../../lib'
+import Calendar from '../../lib'
 import '../entry'
 
 describe('showInput', () => {
