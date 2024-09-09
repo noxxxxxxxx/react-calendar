@@ -138,7 +138,6 @@ export const getRow = (rows: ReactNode[][], year: number) => {
 export const isAMPM = (date: Dayjs | undefined, timeFormat?: string | boolean) => {
   if (!date) return false
   const result = dayjs(date).format(getTimeFormat(timeFormat)).toLowerCase()
-  console.log(result, '//////////', dayjs(date).format())
 
   return result.indexOf('am') !== -1 || result.indexOf('pm') !== -1
 }

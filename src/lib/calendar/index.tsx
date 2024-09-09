@@ -1,5 +1,5 @@
 import { NextView, TimeConstraints, ViewToMethod } from '@/lib/calendar/constant'
-import { formatDate, getDateFormat, getLocalDate, getTimeFormat } from '@/lib/calendar/helper'
+import { formatDate, getDateFormat, getTimeFormat } from '@/lib/calendar/helper'
 import useClickOutside from '@/lib/calendar/helper/useClickoutside'
 import { Input } from '@/lib/calendar/input'
 import '@/lib/calendar/style.scss'
@@ -46,7 +46,7 @@ export const Calendar: FC<Props> = (props) => {
     selectedDate: dayjs(formatDate(value || initialValue, timezoneOffset, dateFormat, timeFormat)),
     inputValue: undefined,
     currentView: viewMode || initialViewMode,
-    viewDate: getLocalDate(timezoneOffset),
+    viewDate: dayjs(formatDate(value || initialValue, timezoneOffset, dateFormat, timeFormat)),
     ready: false,
   })
   const ref = useRef<HTMLDivElement>(null)
@@ -260,7 +260,6 @@ export const Calendar: FC<Props> = (props) => {
         timezoneOffset={timezoneOffset}
         onInputChange={onChange}
       />
-      <>{JSON.stringify(state.selectedDate)}</>
       <div
         className="nc-picker"
         onClick={(e) => e.stopPropagation()}

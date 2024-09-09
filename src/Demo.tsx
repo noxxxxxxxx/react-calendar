@@ -12,11 +12,12 @@ dayjs.extend(localeData)
 dayjs.extend(localizedFormat)
 dayjs.extend(dayOfYear)
 
-dayjs.locale('zh-CN')
+// dayjs.locale('zh-CN')
 
 function Demo() {
   return (
     <Calendar
+      initialValue={dayjs('01/01/2024 12:01:01 PM')}
       onChange={(v) => console.log(v)}
       onClose={(v) => console.log(v, 'close')}
       // onBeforeNavigate={(nextView: ViewMode, currentView: ViewMode, viewDate: Dayjs) => {
