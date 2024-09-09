@@ -11,12 +11,6 @@ importers:
       dayjs:
         specifier: ^1.11.12
         version: 1.11.13
-      react:
-        specifier: ^18.3.1
-        version: 18.3.1
-      react-dom:
-        specifier: ^18.3.1
-        version: 18.3.1(react@18.3.1)
     devDependencies:
       '@jest/globals':
         specifier: ^29.7.0
@@ -84,6 +78,12 @@ importers:
       prettier-plugin-packagejson:
         specifier: ^2.5.2
         version: 2.5.2(prettier@3.3.3)
+      react:
+        specifier: ^18.3.1
+        version: 18.3.1
+      react-dom:
+        specifier: ^18.3.1
+        version: 18.3.1(react@18.3.1)
       sass:
         specifier: ^1.78.0
         version: 1.78.0
