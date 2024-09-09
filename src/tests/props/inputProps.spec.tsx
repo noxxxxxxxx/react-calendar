@@ -40,7 +40,7 @@ describe('inputProps', () => {
     expect(onKeyDown).toBeCalledTimes(1)
 
     fireEvent.keyDown(ele, { key: 'Tab', keyCode: 9, code: 'Tab' })
-    expect(container.querySelector('.rdt-days')).toBeNull()
+    expect(container.querySelector('.nc-days')).toBeNull()
 
     fireEvent.focus(ele)
     expect(onFocus).toBeCalledTimes(1)

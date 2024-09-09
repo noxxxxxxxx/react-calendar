@@ -15,7 +15,7 @@ describe('initialViewMode', () => {
   it('render day view initialViewMode equal day', () => {
     const { container } = render(<Calendar initialViewMode={ViewMode.Day} />)
     fireEvent.click(container.querySelector('input')!)
-    expect(container.querySelector('.rdt-days')).toBeTruthy()
+    expect(container.querySelector('.nc-days')).toBeTruthy()
   })
 
   it('render day view initialViewMode equal month', () => {

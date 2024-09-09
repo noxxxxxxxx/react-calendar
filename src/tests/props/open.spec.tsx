@@ -7,24 +7,24 @@ import '../entry'
 describe('open', () => {
   it('display the calendar panel', () => {
     const { container } = render(<Calendar open={true} />)
-    expect(container.querySelector('.rdt-days')).toBeTruthy()
+    expect(container.querySelector('.nc-days')).toBeTruthy()
   })
 
   it('not display the calendar panel', () => {
     const { container } = render(<Calendar open={false} />)
-    expect(container.querySelector('.rdt-days')).toBeNull()
+    expect(container.querySelector('.nc-days')).toBeNull()
   })
 
   it('open calendar panel after click input', () => {
     const { container } = render(<Calendar />)
     fireEvent.click(container.querySelector('input')!)
-    expect(container.querySelector('.rdt-days')).toBeTruthy()
+    expect(container.querySelector('.nc-days')).toBeTruthy()
   })
 
   it('do nothing after click input', () => {
     const { container } = render(<Calendar />)
     fireEvent.click(container.querySelector('input')!)
-    expect(container.querySelector('.rdt-days')).toBeTruthy()
+    expect(container.querySelector('.nc-days')).toBeTruthy()
     fireEvent.click(container.querySelector('input')!)
     expect(container.querySelector('.nc-picker')).toBeInTheDocument()
   })

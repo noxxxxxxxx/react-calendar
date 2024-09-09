@@ -164,7 +164,7 @@ export const Day: FC<DayProps> = (props) => {
   }
 
   return (
-    <div className="rdt-days">
+    <div className="nc-days">
       <table>
         <thead>
           {renderNavigation()}
