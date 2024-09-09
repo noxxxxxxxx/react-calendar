@@ -16,7 +16,7 @@ dayjs.extend(dayOfYear)
 // dayjs.locale('zh-CN')
 
 function Demo() {
-  const [value, setValue] = useState(dayjs('2024-09-21'))
+  const [value] = useState(dayjs('2024-09-21'))
   return (
     <>
       <Calendar
