@@ -17,5 +17,8 @@ describe('onClose', () => {
     const [res] = onClose.mock.calls[0]
 
     expect(onClose).toHaveBeenCalledWith(dayjs(res))
+
+    fireEvent.click(document, { target: { tagName: 'BODY' } })
+    expect(onClose).toHaveBeenCalledTimes(1)
   })
 })

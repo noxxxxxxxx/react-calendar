@@ -4,6 +4,7 @@ import dayOfYear from 'dayjs/plugin/dayOfYear'
 import localeData from 'dayjs/plugin/localeData'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import utc from 'dayjs/plugin/utc'
+import { useState } from 'react'
 import { Calendar } from './lib'
 // import { ViewMode } from './types'
 // import { Calendar, ViewMode } from './react-canendar.js'
@@ -15,19 +16,17 @@ dayjs.extend(dayOfYear)
 // dayjs.locale('zh-CN')
 
 function Demo() {
+  const [value, setValue] = useState(dayjs('2024-09-21'))
   return (
-    <Calendar
-      initialValue={dayjs('01/01/2024 12:01:01 PM')}
-      onChange={(v) => console.log(v)}
-      onClose={(v) => console.log(v, 'close')}
-      // onBeforeNavigate={(nextView: ViewMode, currentView: ViewMode, viewDate: Dayjs) => {
-      //   console.log(nextView, currentView, viewDate)
-
-      //   return ViewMode.Year
-      // }}
-      // initialViewMode={ViewMode.Year}
-      // onNavigate={(e) => console.log(e)}
-    />
+    <>
+      <Calendar
+        value={value}
+        onChange={(v) => {
+          console.log(v)
+        }}
+        onClose={(v) => console.log(v, 'close')}
+      />
+    </>
   )
 }
 

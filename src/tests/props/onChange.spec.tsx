@@ -13,6 +13,11 @@ describe('onChange', () => {
     fireEvent.click(container.querySelector('[data-value="4"]')!)
     expect(onChange).toBeCalledTimes(1)
     expect(onChange).toHaveBeenCalledWith(expect.any(dayjs))
+
+    fireEvent.click(container.querySelector('input')!)
+    fireEvent.click(container.querySelector('.nc-time-toggle')!)
+    fireEvent.mouseDown(container.querySelector('.nc-counter .nc-btn:last-child')!)
+    expect(onChange).toBeCalledTimes(2)
   })
 
   it('trigger onChange event with input value', () => {

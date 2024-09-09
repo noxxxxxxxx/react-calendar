@@ -74,7 +74,7 @@ export interface Props {
   initialViewMode?: ViewMode
 
   viewMode?: ViewMode
-  className?: string
+  className?: string | string[]
   viewDate?: Dayjs // 下标高亮时间
   closeOnSelect?: boolean // 选中后是否立即关闭弹层
   closeOnClickOutside?: boolean

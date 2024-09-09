@@ -20,4 +20,12 @@ describe('open', () => {
     fireEvent.click(container.querySelector('input')!)
     expect(container.querySelector('.rdt-days')).toBeTruthy()
   })
+
+  it('do nothing after click input', () => {
+    const { container } = render(<Calendar />)
+    fireEvent.click(container.querySelector('input')!)
+    expect(container.querySelector('.rdt-days')).toBeTruthy()
+    fireEvent.click(container.querySelector('input')!)
+    expect(container.querySelector('.nc-picker')).toBeInTheDocument()
+  })
 })

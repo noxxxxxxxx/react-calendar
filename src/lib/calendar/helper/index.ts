@@ -6,6 +6,8 @@ import { ChangeEvent, KeyboardEvent, MouseEvent, ReactNode } from 'react'
 
 export const pad = (type: string, value: number) => {
   const padValues: Record<string, number> = {
+    month: 2,
+    day: 2,
     hour: 2,
     minute: 2,
     second: 2,
