@@ -41,7 +41,7 @@
     "dev": "vite",
     "test": "vitest",
     "coverage": "vitest run --coverage.enabled=true",
-    "build": "tsc -b && vite build && npm run ts",
+    "build": "tsc -b && vite build --watch && npm run ts",
     "lint": "tsc -b && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "ts": "tsc && rm dist/calendar.svg"

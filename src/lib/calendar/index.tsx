@@ -189,7 +189,6 @@ const Calendar: FC<Props> = (props) => {
       viewDate: state.viewDate,
       updateDate,
       navigate,
-      dayjs: dayjs,
       showView: _showView,
       timezoneOffset,
       isEndDate: false,

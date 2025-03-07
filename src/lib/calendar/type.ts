@@ -78,8 +78,7 @@ export interface Props {
   viewDate?: Dayjs // 下标高亮时间
   closeOnSelect?: boolean // 选中后是否立即关闭弹层
   closeOnClickOutside?: boolean
-  // startDate?: Dayjs // 开始日期
-  // endDate?: Dayjs // 结束日期
+  isEndDate?: boolean // 是否为结束日期
   open?: boolean // 是否展示弹窗
   timeLimit?: string // 控制时分秒
   showTime?: boolean // 是否展示时间
@@ -94,7 +93,7 @@ export interface Props {
   }
 
   isValidDate?: (currentDate: Dayjs, selectedDate?: Dayjs) => boolean // 校验是否为合法的日期
-  timezoneOffset?: string
+  timezoneOffset?: number
 
   siblingDate?: Dayjs // 可以表示开始时间/结束时间
   granularity?: string // 时间粒度
@@ -167,7 +166,7 @@ export interface InputProps {
   value: Dayjs | undefined
   dateFormat?: Props['dateFormat']
   timeFormat?: Props['timeFormat']
-  timezoneOffset?: number | string
+  timezoneOffset?: number
   inputProps?: Props['inputProps']
   openCalendar: () => void
   onInputChange?: (value: Dayjs | string) => void

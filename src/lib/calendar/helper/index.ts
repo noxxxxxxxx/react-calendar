@@ -81,7 +81,7 @@ export const getTimeFormat = (timeFormat?: string | boolean) => {
 /* 经过偏移量计算后的日期 */
 export const formatDate = (
   date: Dayjs | undefined,
-  timezoneOffset?: string | number,
+  timezoneOffset?: number,
   dateFormat?: string | boolean,
   timeFormat?: string | boolean,
 ) => {
@@ -90,15 +90,15 @@ export const formatDate = (
   const t = getTimeFormat(timeFormat)
   const final = `${d || ''} ${t || ''}`.trim()
 
-  if (timezoneOffset !== undefined && timezoneOffset !== 'local') {
+  if (timezoneOffset !== undefined) {
     return date.clone().utcOffset(timezoneOffset).format(final)
   }
   return date.clone().format(final)
 }
 
 /* 获取当前本地日期 */
-export const getLocalDate = (timezoneOffset?: string | number) => {
-  if (timezoneOffset !== undefined && timezoneOffset !== 'local') {
+export const getLocalDate = (timezoneOffset?: number) => {
+  if (timezoneOffset !== undefined) {
     return dayjs().utcOffset(timezoneOffset)
   }
   return dayjs()
