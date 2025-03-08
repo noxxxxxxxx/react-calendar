@@ -36,6 +36,7 @@ export default defineConfig({
     }),
   ],
   build: {
+    sourcemap: true,
     lib: {
       name: 'rc-calendar-picker',
       fileName: 'rc-calendar-picker',

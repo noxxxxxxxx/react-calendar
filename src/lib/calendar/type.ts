@@ -100,7 +100,7 @@ export interface Props {
   dateFormat?: string | boolean // YYYY-MM-DD
   timeFormat?: string | boolean // HH:mm:ss
   onOpen?: () => void // calendar open
-  onChange?: (selectedDate: Dayjs | string) => void
+  onChange?: (selectedDate: Dayjs) => void
   onClose?: (date: Dayjs | undefined) => void
   renderYear?: (props: props, year: number | undefined, selectedDate: Dayjs | undefined) => ReactNode
   renderMonth?: (
@@ -172,3 +172,5 @@ export interface InputProps {
   onInputChange?: (value: Dayjs | string) => void
   closeCalendar: () => void
 }
+
+export type onChangeFn = Props['onChange']

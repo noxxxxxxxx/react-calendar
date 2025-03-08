@@ -8,7 +8,9 @@ import '../entry'
 
 describe('value', () => {
   it('render with given value prop', () => {
-    const value = dayjs('2024-09-21 00:00:00')
+    const year = new Date().getFullYear()
+    const month = pad('month', new Date().getMonth() + 1)
+    const value = dayjs(`${year}-${month}-21 00:00:00`)
     const { container } = render(
       <Calendar
         value={value}
@@ -16,8 +18,6 @@ describe('value', () => {
         timeFormat={false}
       />,
     )
-    const year = new Date().getFullYear()
-    const month = pad('month', new Date().getMonth() + 1)
 
     expect(container.querySelector('input')!.value).toEqual(`${year}-${month}-21`)
   })

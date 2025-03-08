@@ -258,7 +258,7 @@ const Calendar: FC<Props> = (props) => {
         openCalendar={openCalendar}
         closeCalendar={closeCalendar}
         timezoneOffset={timezoneOffset}
-        onInputChange={onChange}
+        onInputChange={(value) => onChange?.(dayjs(value))}
       />
       <div
         className="nc-picker"
