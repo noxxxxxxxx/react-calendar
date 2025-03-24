@@ -3,7 +3,7 @@ import { formatDate, getDateFormat, getTimeFormat } from '@/lib/calendar/helper'
 import useClickOutside from '@/lib/calendar/helper/useClickoutside'
 import { Input } from '@/lib/calendar/input'
 import '@/lib/calendar/style.scss'
-import { Props, State, ViewMode } from '@/lib/calendar/type'
+import { Props, State } from '@/lib/calendar/type'
 import { Day } from '@/lib/calendar/view/day'
 import { Month } from '@/lib/calendar/view/month/month'
 import { Time } from '@/lib/calendar/view/time/time'
@@ -11,6 +11,7 @@ import { Year } from '@/lib/calendar/view/year/year'
 import type { Dayjs, ManipulateType, UnitTypeLong } from 'dayjs'
 import dayjs from 'dayjs'
 import { FC, MouseEvent, useEffect, useRef, useState } from 'react'
+import { ViewMode } from '..'
 
 const Calendar: FC<Props> = (props) => {
   const {

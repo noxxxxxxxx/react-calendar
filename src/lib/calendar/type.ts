@@ -2,26 +2,7 @@ declare module '*.scss'
 
 import { Dayjs, UnitTypeLong } from 'dayjs'
 import { MouseEvent, ReactNode } from 'react'
-
-export enum Mode {
-  StartDate = 'startDate',
-  EndDate = 'endDate',
-}
-
-export enum ViewMode {
-  Year = 'year',
-  Month = 'month',
-  Day = 'day',
-  Time = 'time',
-}
-
-export enum TimeConstraintsKeys {
-  Hour = 'hour',
-  Minute = 'minute',
-  Second = 'second',
-  Millisecond = 'millisecond',
-  Ampm = 'ampm',
-}
+import { TimeConstraintsKeys, ViewMode } from './constant'
 
 export type TimeConstraintsType = {
   [TimeConstraintsKeys.Hour]: {

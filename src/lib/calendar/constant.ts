@@ -1,4 +1,24 @@
-import { TimeConstraintsType, ViewMode } from '@/lib/calendar/type'
+import { TimeConstraintsType } from '@/lib/calendar/type'
+
+export enum Mode {
+  StartDate = 'startDate',
+  EndDate = 'endDate',
+}
+
+export enum ViewMode {
+  Year = 'year',
+  Month = 'month',
+  Day = 'day',
+  Time = 'time',
+}
+
+export enum TimeConstraintsKeys {
+  Hour = 'hour',
+  Minute = 'minute',
+  Second = 'second',
+  Millisecond = 'millisecond',
+  Ampm = 'ampm',
+}
 
 export const ViewToMethod: Record<string, string> = {
   [ViewMode.Day]: 'date',

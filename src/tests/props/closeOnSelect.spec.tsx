@@ -1,4 +1,4 @@
-import { ViewMode } from '@/lib/calendar/type'
+import { ViewMode } from '@/lib/calendar/constant'
 import '@testing-library/jest-dom'
 import { fireEvent, render } from '@testing-library/react'
 import dayjs from 'dayjs'

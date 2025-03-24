@@ -1,8 +1,9 @@
 import { getDaysOfWeek, getLocalDate } from '@/lib/calendar/helper'
 import ViewNavigation from '@/lib/calendar/parts/navigation'
-import { DayProps, ViewMode, WraperProps } from '@/lib/calendar/type'
+import { DayProps, WraperProps } from '@/lib/calendar/type'
 import type { Dayjs, InstanceLocaleDataReturn } from 'dayjs'
 import { FC, MouseEvent, ReactNode } from 'react'
+import { ViewMode } from '../../constant'
 
 export const Day: FC<DayProps> = (props) => {
   const {

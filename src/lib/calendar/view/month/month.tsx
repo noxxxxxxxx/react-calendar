@@ -1,7 +1,8 @@
 import { capitalize, getRow } from '@/lib/calendar/helper'
 import ViewNavigation from '@/lib/calendar/parts/navigation'
-import { MonthProps, ViewMode, WraperProps } from '@/lib/calendar/type'
+import { MonthProps, WraperProps } from '@/lib/calendar/type'
 import { FC, MouseEvent, ReactNode } from 'react'
+import { ViewMode } from '../../constant'
 
 export const Month: FC<MonthProps> = (props) => {
   const { viewDate, updateDate, renderMonth, isValidDate, navigate, showView, selectedDate } = props

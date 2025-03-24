@@ -1,3 +1,4 @@
 import Calendar from './calendar'
 export default Calendar
-export type { onChangeFn, ViewMode } from './calendar/type'
+export { ViewMode } from './calendar/constant'
+export type { onChangeFn } from './calendar/type'
