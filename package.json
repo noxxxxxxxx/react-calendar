@@ -1,6 +1,6 @@
 {
   "name": "rc-calendar-picker",
-  "version": "0.0.12-0",
+  "version": "0.0.12-beta.0",
   "type": "module",
   "files": [
     "README.md",
