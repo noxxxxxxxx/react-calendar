@@ -1,4 +1,4 @@
-import { NextView, TimeConstraints, ViewToMethod } from '@/lib/calendar/constant'
+import { NextView, ViewToMethod } from '@/lib/calendar/constant'
 import { formatDate, getDateFormat, getTimeFormat } from '@/lib/calendar/helper'
 import useClickOutside from '@/lib/calendar/helper/useClickoutside'
 import { Input } from '@/lib/calendar/input'
@@ -28,8 +28,11 @@ const Calendar: FC<Props> = (props) => {
     timeFormat = true,
     viewMode,
     closeOnClickOutside = true,
-    timeLimit = 'HH:mm:ss',
+    timeLimit = 'HH:mm:ss', // 24 小时制
     showTime = true,
+    isEndDate,
+    siblingDate,
+    isValidDate,
     renderYear,
     renderMonth,
     renderDay,
@@ -40,6 +43,7 @@ const Calendar: FC<Props> = (props) => {
     onNavigate,
     onNavigateForward,
     onNavigateBack,
+    timeConstraints,
   } = props
 
   const [state, setState] = useState<State>({
@@ -92,11 +96,14 @@ const Calendar: FC<Props> = (props) => {
     const result = {
       ...state,
       ...(data ?? {}),
-      open: false,
+      open: !closeOnSelect,
     }
 
     setState(result)
-    onClose?.(result.selectedDate)
+
+    if (closeOnSelect) {
+      onClose?.(result.selectedDate)
+    }
   }
 
   const _showView = (nextView: ViewMode, date: Dayjs) => {
@@ -133,7 +140,7 @@ const Calendar: FC<Props> = (props) => {
       onChange?.(target.viewDate)
 
       // close immediately when select date
-      if (currentView === viewMode || (closeOnSelect && viewMode === undefined && currentView === ViewMode.Day)) {
+      if (currentView === viewMode) {
         target.selectedDate = viewDate.clone()
         const newState = {
           ...state,
@@ -192,14 +199,16 @@ const Calendar: FC<Props> = (props) => {
       navigate,
       showView: _showView,
       timezoneOffset,
-      isEndDate: false,
+      isEndDate,
+      siblingDate,
+      isValidDate,
       renderYear,
       renderMonth,
       renderDay,
       setTime,
       dateFormat: getDateFormat(dateFormat),
       timeFormat: getTimeFormat(timeFormat),
-      timeConstraints: TimeConstraints,
+      timeConstraints,
       timeLimit,
       showTime,
     }
@@ -212,6 +221,7 @@ const Calendar: FC<Props> = (props) => {
         return <Month {...viewProps} />
 
       case ViewMode.Time:
+        // @ts-ignore
         return <Time {...viewProps} />
 
       default:

@@ -45,6 +45,7 @@ export const createConstraints = (overrideTimeConstraints?: TimeConstraintsType)
   const constraints: TimeConstraintsType = TimeConstraints
 
   Object.keys(TimeConstraints).forEach((type) => {
+    // @ts-ignore
     constraints[type as keyof TimeConstraintsType] = {
       ...TimeConstraints[type as keyof TimeConstraintsType],
       ...(overrideTimeConstraints?.[type as keyof TimeConstraintsType] || {}),

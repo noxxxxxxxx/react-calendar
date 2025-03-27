@@ -65,3 +65,16 @@ npm run coverage
 ## LICENSE
 
 This repository is published under [MIT license]()
+
+测试 value为空的情况 <DateTime
+      sortBy={DateGranularityValue.Day}
+      timezoneOffset={undefined}
+      type={Type.dynamic}
+      value={[]}
+      startDateDiff={1}
+      endDateDiff={7}
+      dynamicType={DynamicType.week}
+      defaultOpen={false}
+      afterConfirm={onDateChange}
+      afterCancel={onDateCancel}
+    />

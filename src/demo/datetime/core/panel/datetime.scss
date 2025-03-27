@@ -1,38 +1,4 @@
-:root {
-  --brand-100: #e9f1fd;
-  --brand-200: #bad2f9;
-  --brand-300: #99bdf7;
-  --brand-400: #6a9ff3;
-  --brand-500: #4d8cf1;
-  --brand-600: #216fed;
-  --brand-700: #1e65d8;
-  --brand-800: #174fa8;
-  --neutral-100: #fafafb;
-  --neutral-150: #f6f6f9;
-  --neutral-200: #f0f2f6;
-  --neutral-300: #ebedf0;
-  --neutral-400: #dfe2e6;
-  --neutral-500: #c2c7d0;
-  --neutral-600: #b3b9c4;
-  --neutral-700: #a6aebb;
-  --neutral-800: #98a1b0;
-  --neutral-900: #8993a4;
-  --neutral-1000: #7a8699;
-  --neutral-1100: #6b788e;
-  --neutral-1200: #5d6b82;
-  --neutral-1300: #505f79;
-  --neutral-1400: #42526d;
-  --neutral-1500: #354764;
-  --neutral-1600: #243757;
-  --neutral-1700: #15294b;
-  --neutral-1800: #091e42;
-}
-
-.nc-days,
-.nc-months,
-.nc-years,
-.nc-time {
-  padding: 4px;
+.nc-days {
   table {
     border-spacing: 0 2px;
   }
@@ -49,7 +15,38 @@
   z-index: 99999 !important;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
+  font-size: 12px;
+
+  tr {
+    border-top: 2px solid #fff;
+    border-bottom: 2px solid #fff;
+  }
+
+  td {
+    padding: 2px;
+    cursor: pointer;
+  }
+
+  td,
+  th {
+    text-align: center;
+    height: 24px;
+    width: 35px;
+    box-sizing: border-box;
+  }
+
+  .nc-time-toggle {
+    text-align: center;
+  }
+
+  .nc-switch {
+    width: 100px;
+    font-weight: 500;
+    cursor: pointer;
+    &:hover {
+      background: var(--neutral-300);
+    }
+  }
 }
 
 .nc-open .nc-picker {
@@ -61,27 +58,10 @@
   position: static;
 }
 
-.nc-picker .nc-time-toggle {
-  text-align: center;
-}
-
-.nc-picker table {
+.nc-picker .nc-picker table {
   width: 100%;
   margin: 0;
-}
-
-.nc-picker td,
-.nc-picker th {
-  font-weight: normal;
-  text-align: center;
-  height: 24px;
-  width: 35px;
-  box-sizing: border-box;
-}
-
-.nc-picker td {
-  padding: 6px;
-  cursor: pointer;
+  border-spacing: 0;
 }
 
 .nc-picker td.nc-day:hover,
@@ -89,7 +69,7 @@
 .nc-picker td.nc-minute:hover,
 .nc-picker td.nc-seconds:hover,
 .nc-picker .nc-time-toggle:hover {
-  background-color: var(--neutral-300);
+  background: var(--neutral-300);
   cursor: pointer;
 }
 
@@ -102,13 +82,18 @@
   position: relative;
 }
 
+.nc-picker td.in-range {
+  background-color: var(--neutral-300);
+  &:hover {
+    background-color: var(--neutral-300);
+  }
+}
+
 .nc-picker td.nc-sibling {
-  background-color: var(--brand-600);
-  opacity: 0.7;
+  background-color: var(--brand-200);
   color: #fff;
   &:hover {
-    background-color: var(--brand-600);
-    opacity: 0.7;
+    background-color: var(--brand-200);
     color: #fff;
   }
 }
@@ -128,7 +113,6 @@
 .nc-picker td.nc-active:hover {
   background-color: var(--brand-600);
   color: #fff;
-  opacity: 1;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -151,15 +135,6 @@
   width: 14.2857%;
   border-bottom: none;
   cursor: default;
-}
-
-.nc-switch {
-  width: 100px;
-  height: 32px !important;
-  cursor: pointer;
-  &:hover {
-    background: var(--neutral-300);
-  }
 }
 
 .nc-picker th.nc-next,

@@ -86,7 +86,7 @@ export const Day: FC<DayProps> = (props) => {
       }
     }
     if (siblingDate?.isSame(date, 'day')) {
-      className += ' siblingDate'
+      className += ' nc-sibling'
     }
     if (selectedDate?.isSame(date, 'day')) {
       className += ' nc-active'

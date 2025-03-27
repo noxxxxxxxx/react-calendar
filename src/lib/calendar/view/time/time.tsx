@@ -32,6 +32,7 @@ export const Time: FC<TimeProps> = (props) => {
       counters.push(TimeConstraintsKeys.Ampm)
     }
 
+    console.log(counters)
     return counters
   }
 
@@ -72,18 +73,24 @@ export const Time: FC<TimeProps> = (props) => {
 
   const increase = (type: string) => {
     const tc = timeConfig[type as keyof TimeConstraintsType]
-    let value = parseInt(timeParts[type as keyof typeof timeParts], 10) + tc.step
-    if (value > tc.max) {
-      value = tc.min + (value - (tc.max + 1))
+    if (tc) {
+      let value = parseInt(timeParts[type as keyof typeof timeParts], 10) + tc.step
+      if (value > tc.max) {
+        value = tc.min + (value - (tc.max + 1))
+      }
+      return pad(type, value)
     }
-    return pad(type, value)
+    throw new Error('Invalid tc value')
   }
 
   const decrease = (type: string) => {
     const tc = timeConfig[type as keyof TimeConstraintsType]
-    let value = parseInt(timeParts[type as keyof typeof timeParts], 10) - tc.step
-    if (value < tc.min) value = tc.max + 1 - (tc.min - value)
-    return pad(type, value)
+    if (tc) {
+      let value = parseInt(timeParts[type as keyof typeof timeParts], 10) - tc.step
+      if (value < tc.min) value = tc.max + 1 - (tc.min - value)
+      return pad(type, value)
+    }
+    throw new Error('Invalid tc value')
   }
 
   const onStepClick = (e: MouseEvent, action: string, type: UnitTypeLong | string) => {
@@ -102,6 +109,7 @@ export const Time: FC<TimeProps> = (props) => {
   }
 
   const renderCounter = (type: string, value: string) => {
+    console.log(type, value)
     let v: string | number | undefined = value
     if (type === 'hour' && isAMPM(viewDate, timeFormat)) {
       v = pad('hour', ((Number(v) - 1) % 12) + 1)

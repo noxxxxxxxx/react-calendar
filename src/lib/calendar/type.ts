@@ -5,22 +5,22 @@ import { MouseEvent, ReactNode } from 'react'
 import { TimeConstraintsKeys, ViewMode } from './constant'
 
 export type TimeConstraintsType = {
-  [TimeConstraintsKeys.Hour]: {
+  [TimeConstraintsKeys.Hour]?: {
     min: number
     max: number
     step: number
   }
-  [TimeConstraintsKeys.Minute]: {
+  [TimeConstraintsKeys.Minute]?: {
     min: number
     max: number
     step: number
   }
-  [TimeConstraintsKeys.Second]: {
+  [TimeConstraintsKeys.Second]?: {
     min: number
     max: number
     step: number
   }
-  [TimeConstraintsKeys.Millisecond]: {
+  [TimeConstraintsKeys.Millisecond]?: {
     min: number
     max: number
     step: number
@@ -52,19 +52,13 @@ export interface props {
 export interface Props {
   value?: Dayjs
   initialValue?: Dayjs
-  initialViewMode?: ViewMode
-
-  viewMode?: ViewMode
-  className?: string | string[]
-  viewDate?: Dayjs // 下标高亮时间
+  initialViewMode?: ViewMode // 初始展示的视图
+  timezoneOffset?: number
   closeOnSelect?: boolean // 选中后是否立即关闭弹层
-  closeOnClickOutside?: boolean
-  isEndDate?: boolean // 是否为结束日期
-  open?: boolean // 是否展示弹窗
-  timeLimit?: string // 控制时分秒
-  showTime?: boolean // 是否展示时间
-
+  className?: string | string[]
   showInput?: boolean // 是否需要展示 Input
+  open?: boolean // 是否展示弹窗，通常用于单独展示日历面板时使用，大多数情况会做二次封装，因此固定传false保持打开即可
+  // 当启用showInput时，透传input的props
   inputProps?: {
     [key: string]: unknown
     onFocus?: (...args: unknown[]) => boolean | void
@@ -72,14 +66,16 @@ export interface Props {
     onChange?: (...args: unknown[]) => void
     onKeyDown?: (...args: unknown[]) => boolean | void
   }
-
+  dateFormat?: string | boolean // YYYY-MM-DD 控制输出的格式类型
+  timeFormat?: string | boolean // HH:mm:ss 控制输出的格式类型
+  viewMode?: ViewMode // 展示的视图 是固定的视图么？
+  closeOnClickOutside?: boolean
+  timeLimit?: string // 控制时分秒格式 hh:mm:ss
+  showTime?: boolean // 是否展示时间
+  isEndDate?: boolean // 是否为结束日期
   isValidDate?: (currentDate: Dayjs, selectedDate?: Dayjs) => boolean // 校验是否为合法的日期
-  timezoneOffset?: number
-
-  siblingDate?: Dayjs // 可以表示开始时间/结束时间
-  granularity?: string // 时间粒度
-  dateFormat?: string | boolean // YYYY-MM-DD
-  timeFormat?: string | boolean // HH:mm:ss
+  siblingDate?: Dayjs // 可以表示开始时间/结束时间 用来决定日历范围的样式，不传则不开启样式
+  timeConstraints?: TimeConstraintsType // 时间约束
   onOpen?: () => void // calendar open
   onChange?: (selectedDate: Dayjs) => void
   onClose?: (date: Dayjs | undefined) => void
@@ -99,37 +95,41 @@ export interface Props {
 
 export interface DayProps extends Props {
   selectedDate?: Dayjs
+  viewDate: Dayjs
   updateDate: (e: MouseEvent) => void
   navigate: any
   showView: any
-  isEndDate: boolean
+  isEndDate?: boolean
   showTime: boolean
 }
 
 export interface MonthProps extends Props {
+  viewDate: Dayjs
   selectedDate?: Dayjs
   updateDate: (e: MouseEvent) => void
   navigate: any
   showView: any
-  isEndDate: boolean
+  isEndDate?: boolean
   showTime: boolean
 }
 
 export interface YearProps extends Props {
+  viewDate: Dayjs
   selectedDate?: Dayjs
   updateDate: (e: MouseEvent) => void
   navigate: any
   showView: any
-  isEndDate: boolean
+  isEndDate?: boolean
   showTime: boolean
 }
 
 export interface TimeProps extends Props {
+  viewDate: Dayjs
   selectedDate?: Dayjs
   updateDate: (e: MouseEvent) => void
   navigate: any
   showView: any
-  isEndDate: boolean
+  isEndDate?: boolean
   showTime: boolean
   setTime?: (type: UnitTypeLong, value: number) => void
   timeLimit: string
