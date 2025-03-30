@@ -15,7 +15,7 @@ export const Month: FC<MonthProps> = (props) => {
         onClickSwitch={() => showView(ViewMode.Year)}
         onClickNext={() => navigate(1, ViewMode.Year)}
         switchContent={year}
-        switchColSpan="2"
+        switchColSpan="5"
       />
     )
   }

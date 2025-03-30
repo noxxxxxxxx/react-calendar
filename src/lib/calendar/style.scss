@@ -37,6 +37,7 @@
     border-spacing: 0 2px;
   }
 }
+
 .rdt {
   position: relative;
 }
@@ -49,7 +50,7 @@
   z-index: 99999 !important;
   background: #fff;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .nc-open .nc-picker {
@@ -80,7 +81,7 @@
 }
 
 .nc-picker td {
-  padding: 6px;
+  padding: 2px;
   cursor: pointer;
 }
 
@@ -102,13 +103,14 @@
   position: relative;
 }
 
-.nc-picker td.nc-sibling {
+.nc-picker td.nc-sibling,
+.in-range {
   background-color: var(--brand-600);
-  opacity: 0.7;
+  opacity: 0.3;
   color: #fff;
   &:hover {
-    background-color: var(--brand-600);
-    opacity: 0.7;
+    background-color: var(--brand-600) !important;
+    opacity: 0.3;
     color: #fff;
   }
 }
@@ -138,6 +140,7 @@
   background: none;
   color: #d3d3d3;
   cursor: not-allowed;
+  text-shadow: none;
 }
 
 .nc-picker td span.nc-disabled,
@@ -155,7 +158,6 @@
 
 .nc-switch {
   width: 100px;
-  height: 32px !important;
   cursor: pointer;
   &:hover {
     background: var(--neutral-300);

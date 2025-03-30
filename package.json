@@ -10,7 +10,7 @@
     "index.d.ts"
   ],
   "author": "noxxxx <brooks2harry@gmail.com>",
-  "typings": "./dist/index.d.ts",
+  "types": "./dist/index.d.ts",
   "main": "./dist/rc-calendar-picker.umd.cjs",
   "module": "./dist/rc-calendar-picker.js",
   "exports": {
@@ -38,7 +38,7 @@
     "url": "https://github.com/noxxxxxxxx/calendar/issues"
   },
   "scripts": {
-    "dev": "vite",
+    "dev": "tsc && vite",
     "test": "vitest",
     "coverage": "vitest run --coverage.enabled=true",
     "build": "tsc -b && vite build --watch && npm run ts",

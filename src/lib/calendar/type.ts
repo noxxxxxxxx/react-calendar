@@ -4,23 +4,24 @@ import { Dayjs, UnitTypeLong } from 'dayjs'
 import { MouseEvent, ReactNode } from 'react'
 import { TimeConstraintsKeys, ViewMode } from './constant'
 
+/* 限制时分秒步进的配置 */
 export type TimeConstraintsType = {
-  [TimeConstraintsKeys.Hour]?: {
+  [TimeConstraintsKeys.Hour]: {
     min: number
     max: number
     step: number
   }
-  [TimeConstraintsKeys.Minute]?: {
+  [TimeConstraintsKeys.Minute]: {
     min: number
     max: number
     step: number
   }
-  [TimeConstraintsKeys.Second]?: {
+  [TimeConstraintsKeys.Second]: {
     min: number
     max: number
     step: number
   }
-  [TimeConstraintsKeys.Millisecond]?: {
+  [TimeConstraintsKeys.Millisecond]: {
     min: number
     max: number
     step: number
@@ -133,7 +134,7 @@ export interface TimeProps extends Props {
   showTime: boolean
   setTime?: (type: UnitTypeLong, value: number) => void
   timeLimit: string
-  timeConstraints: TimeConstraintsType
+  timeConstraints?: TimeConstraintsType
 }
 
 export interface InputProps {

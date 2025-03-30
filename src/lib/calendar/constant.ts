@@ -33,22 +33,22 @@ export const NextView: Record<string, ViewMode> = {
 }
 
 export const TimeConstraints: TimeConstraintsType = {
-  hour: {
+  [TimeConstraintsKeys.Hour]: {
     min: 0,
     max: 23,
     step: 1,
   },
-  minute: {
+  [TimeConstraintsKeys.Minute]: {
     min: 0,
     max: 59,
     step: 1,
   },
-  second: {
+  [TimeConstraintsKeys.Second]: {
     min: 0,
     max: 59,
     step: 1,
   },
-  millisecond: {
+  [TimeConstraintsKeys.Millisecond]: {
     min: 0,
     max: 999,
     step: 1,

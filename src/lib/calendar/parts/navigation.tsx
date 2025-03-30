@@ -1,6 +1,6 @@
 const Navigation = ({ onClickPrev, onClickSwitch, onClickNext, switchContent, switchColSpan, switchProps }: any) => {
   return (
-    <tr>
+    <tr className="nc-switch-head">
       <th
         className="nc-prev"
         onClick={onClickPrev}

@@ -44,8 +44,8 @@ export const getTimeParts = (date?: Dayjs) => {
 export const createConstraints = (overrideTimeConstraints?: TimeConstraintsType) => {
   const constraints: TimeConstraintsType = TimeConstraints
 
+  // 合并用户配置
   Object.keys(TimeConstraints).forEach((type) => {
-    // @ts-ignore
     constraints[type as keyof TimeConstraintsType] = {
       ...TimeConstraints[type as keyof TimeConstraintsType],
       ...(overrideTimeConstraints?.[type as keyof TimeConstraintsType] || {}),

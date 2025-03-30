@@ -179,7 +179,7 @@ const Calendar: FC<Props> = (props) => {
     let date = state.viewDate?.clone()
 
     if (date) {
-      date = date[type](v)
+      date = date.set(type, v)
 
       setState({
         ...state,
@@ -221,7 +221,6 @@ const Calendar: FC<Props> = (props) => {
         return <Month {...viewProps} />
 
       case ViewMode.Time:
-        // @ts-ignore
         return <Time {...viewProps} />
 
       default:
@@ -249,8 +248,6 @@ const Calendar: FC<Props> = (props) => {
         ready: true,
       })
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [value, timezoneOffset, dateFormat, timeFormat])
 
   if (!state.ready) return null

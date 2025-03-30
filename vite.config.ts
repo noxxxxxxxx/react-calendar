@@ -12,6 +12,7 @@ const externals = [...Object.keys(packageJson.peerDependencies), 'react/jsx-runt
 // https://vitejs.dev/config/
 export default defineConfig({
   resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js', '.json'], // 添加需要自动解析的文件扩展名
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
@@ -36,7 +37,7 @@ export default defineConfig({
     }),
   ],
   build: {
-    sourcemap: true,
+    // sourcemap: true,
     lib: {
       name: 'rc-calendar-picker',
       fileName: 'rc-calendar-picker',

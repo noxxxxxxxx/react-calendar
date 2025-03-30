@@ -83,6 +83,7 @@ export const Year: FC<YearProps> = (props) => {
         onClickSwitch={() => showView(ViewMode.Year)}
         onClickNext={() => navigate(10, ViewMode.Year)}
         switchContent={`${viewYear}-${viewYear + 9}`}
+        switchColSpan="5"
       />
     )
   }

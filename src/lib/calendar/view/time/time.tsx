@@ -32,7 +32,6 @@ export const Time: FC<TimeProps> = (props) => {
       counters.push(TimeConstraintsKeys.Ampm)
     }
 
-    console.log(counters)
     return counters
   }
 
@@ -109,7 +108,6 @@ export const Time: FC<TimeProps> = (props) => {
   }
 
   const renderCounter = (type: string, value: string) => {
-    console.log(type, value)
     let v: string | number | undefined = value
     if (type === 'hour' && isAMPM(viewDate, timeFormat)) {
       v = pad('hour', ((Number(v) - 1) % 12) + 1)
