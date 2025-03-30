@@ -7,7 +7,7 @@ import duration from 'dayjs/plugin/duration'
 import { default as localeData } from 'dayjs/plugin/localeData'
 import localizedFormat from 'dayjs/plugin/localizedFormat'
 import utc from 'dayjs/plugin/utc'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { DateTime, DynamicType, Type } from './components/datetime'
 // import { ViewMode } from './types'
 // import { Calendar, ViewMode } from './react-canendar.js'
@@ -30,7 +30,7 @@ export type TimeValueType = {
 }
 
 function Demo() {
-  const [value, setValue] = useState([
+  const [value, setValue] = useState<[Dayjs, Dayjs]>([
     dayjs().startOf('day'),
     dayjs()
       .minute(dayjs().minute() - 5)
@@ -54,7 +54,7 @@ function Demo() {
   }
   const onDateCancel = () => {}
 
-  useState(() => {
+  useEffect(() => {
     if (value[0].isAfter(value[1])) {
       setValue([value[1].startOf('day'), value[1]])
     }
