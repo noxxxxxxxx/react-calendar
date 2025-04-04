@@ -9,6 +9,7 @@
     "package.json",
     "index.d.ts"
   ],
+  "style": "dist/rc-calendar-picker.css",
   "author": "noxxxx <brooks2harry@gmail.com>",
   "types": "./dist/index.d.ts",
   "main": "./dist/rc-calendar-picker.umd.cjs",
@@ -41,10 +42,9 @@
     "dev": "tsc && vite",
     "test": "vitest",
     "coverage": "vitest run --coverage.enabled=true",
-    "build": "tsc -b && vite build --watch && npm run ts",
+    "build": "tsc -b && vite build && sass --no-source-map src/lib/calendar/style.scss dist/style.css --style compressed",
     "lint": "tsc -b && eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview",
-    "ts": "tsc && rm dist/calendar.svg"
+    "preview": "vite preview"
   },
   "peerDependencies": {
     "dayjs": "^1.11.13",

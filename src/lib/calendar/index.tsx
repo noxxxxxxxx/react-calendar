@@ -2,7 +2,6 @@ import { NextView, ViewToMethod } from '@/lib/calendar/constant'
 import { formatDate, getDateFormat, getTimeFormat } from '@/lib/calendar/helper'
 import useClickOutside from '@/lib/calendar/helper/useClickoutside'
 import { Input } from '@/lib/calendar/input'
-import '@/lib/calendar/style.scss'
 import { Props, State } from '@/lib/calendar/type'
 import { Day } from '@/lib/calendar/view/day'
 import { Month } from '@/lib/calendar/view/month/month'
@@ -29,7 +28,7 @@ const Calendar: FC<Props> = (props) => {
     viewMode,
     closeOnClickOutside = true,
     timeLimit = 'HH:mm:ss', // 24 小时制
-    showTime = true,
+    showTime = false,
     isEndDate,
     siblingDate,
     isValidDate,
@@ -140,7 +139,7 @@ const Calendar: FC<Props> = (props) => {
       onChange?.(target.viewDate)
 
       // close immediately when select date
-      if (currentView === viewMode) {
+      if (currentView === viewMode || (!viewMode && currentView === ViewMode.Day)) {
         target.selectedDate = viewDate.clone()
         const newState = {
           ...state,
@@ -266,7 +265,7 @@ const Calendar: FC<Props> = (props) => {
         openCalendar={openCalendar}
         closeCalendar={closeCalendar}
         timezoneOffset={timezoneOffset}
-        onInputChange={(value) => onChange?.(dayjs(value))}
+        onInputChange={(value) => onChange?.(dayjs(value).isValid() ? dayjs(value) : value)}
       />
       <div
         className="nc-picker"

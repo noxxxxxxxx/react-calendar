@@ -1,31 +1,7 @@
 :root {
-  --brand-100: #e9f1fd;
-  --brand-200: #bad2f9;
-  --brand-300: #99bdf7;
-  --brand-400: #6a9ff3;
-  --brand-500: #4d8cf1;
-  --brand-600: #216fed;
-  --brand-700: #1e65d8;
-  --brand-800: #174fa8;
-  --neutral-100: #fafafb;
-  --neutral-150: #f6f6f9;
-  --neutral-200: #f0f2f6;
-  --neutral-300: #ebedf0;
-  --neutral-400: #dfe2e6;
-  --neutral-500: #c2c7d0;
-  --neutral-600: #b3b9c4;
-  --neutral-700: #a6aebb;
-  --neutral-800: #98a1b0;
-  --neutral-900: #8993a4;
-  --neutral-1000: #7a8699;
-  --neutral-1100: #6b788e;
-  --neutral-1200: #5d6b82;
-  --neutral-1300: #505f79;
-  --neutral-1400: #42526d;
-  --neutral-1500: #354764;
-  --neutral-1600: #243757;
-  --neutral-1700: #15294b;
-  --neutral-1800: #091e42;
+  --nc-brand-600: #216fed;
+  --nc-neutral-300: #ebedf0;
+  --nc-neutral-700: #a6aebb;
 }
 
 .nc-days,
@@ -85,66 +61,66 @@
   cursor: pointer;
 }
 
-.nc-picker td.nc-day:hover,
-.nc-picker td.nc-hour:hover,
-.nc-picker td.nc-minute:hover,
-.nc-picker td.nc-seconds:hover,
+.nc-picker .nc-day:hover,
+.nc-picker .nc-hour:hover,
+.nc-picker .nc-minute:hover,
+.nc-picker .nc-seconds:hover,
 .nc-picker .nc-time-toggle:hover {
-  background-color: var(--neutral-300);
+  background-color: var(--nc-neutral-300);
   cursor: pointer;
 }
 
-.nc-picker td.nc-after,
-.nc-picker td.nc-before {
-  color: var(--neutral-700);
+.nc-picker .nc-after,
+.nc-picker .nc-before {
+  color: var(--nc-neutral-700);
 }
 
-.nc-picker td.nc-today {
+.nc-picker .nc-today {
   position: relative;
 }
 
-.nc-picker td.nc-sibling,
+.nc-picker .nc-sibling,
 .in-range {
-  background-color: var(--brand-600);
+  background-color: var(--nc-brand-600);
   opacity: 0.3;
   color: #fff;
   &:hover {
-    background-color: var(--brand-600) !important;
+    background-color: var(--nc-brand-600) !important;
     opacity: 0.3;
     color: #fff;
   }
 }
 
-.nc-picker td.nc-today:before {
+.nc-picker .nc-today:before {
   content: "";
   display: inline-block;
   border-left: 10px solid transparent;
-  border-bottom: 10px solid var(--brand-600);
+  border-bottom: 10px solid var(--nc-brand-600);
   border-top-color: rgba(0, 0, 0, 0.2);
   position: absolute;
   bottom: 0px;
   right: 0px;
 }
 
-.nc-picker td.nc-active,
-.nc-picker td.nc-active:hover {
-  background-color: var(--brand-600);
+.nc-picker .nc-active,
+.nc-picker .nc-active:hover {
+  background-color: var(--nc-brand-600);
   color: #fff;
   opacity: 1;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
 .nc-picker .dow,
-.nc-picker td.nc-disabled,
-.nc-picker td.nc-disabled:hover {
+.nc-picker .nc-disabled,
+.nc-picker .nc-disabled:hover {
   background: none;
   color: #d3d3d3;
   cursor: not-allowed;
   text-shadow: none;
 }
 
-.nc-picker td span.nc-disabled,
-.nc-picker td span.nc-disabled:hover {
+.nc-picker span.nc-disabled,
+.nc-picker span.nc-disabled:hover {
   background: none;
   color: #999999;
   cursor: not-allowed;
@@ -160,7 +136,7 @@
   width: 100px;
   cursor: pointer;
   &:hover {
-    background: var(--neutral-300);
+    background: var(--nc-neutral-300);
   }
 }
 
@@ -169,7 +145,7 @@
   font-size: 18px;
   vertical-align: top;
   &:hover {
-    background: var(--neutral-300);
+    background: var(--nc-neutral-300);
   }
 }
 
@@ -223,16 +199,16 @@
   height: 100%;
 }
 
-td.nc-month,
-td.nc-year {
+.nc-month,
+.nc-year {
   height: 50px;
   width: 25%;
   padding: 10px;
   cursor: pointer;
 }
 
-td.nc-month:hover,
-td.nc-year:hover {
+.nc-month:hover,
+.nc-year:hover {
   background: #eee;
 }
 

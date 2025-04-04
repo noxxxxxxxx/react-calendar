@@ -8,7 +8,12 @@ import '../entry'
 describe('onChange', () => {
   it('trigger onChange event with parma', () => {
     const onChange = vi.fn()
-    const { container } = render(<Calendar onChange={onChange} />)
+    const { container } = render(
+      <Calendar
+        onChange={onChange}
+        showTime={true}
+      />,
+    )
     fireEvent.click(container.querySelector('input')!)
     fireEvent.click(container.querySelector('[data-value="4"]')!)
     expect(onChange).toBeCalledTimes(1)

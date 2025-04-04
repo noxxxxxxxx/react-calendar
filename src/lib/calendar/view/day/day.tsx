@@ -80,8 +80,8 @@ export const Day: FC<DayProps> = (props) => {
         className += ' in-range'
       }
     }
-    if (selectedDate?.isAfter(siblingDate, 'day')) {
-      if (date.isAfter(siblingDate, 'day') && date.isBefore(selectedDate, 'day')) {
+    if (siblingDate && selectedDate?.isAfter(siblingDate, 'day')) {
+      if (siblingDate && date.isAfter(siblingDate, 'day') && date.isBefore(selectedDate, 'day')) {
         className += ' in-range'
       }
     }

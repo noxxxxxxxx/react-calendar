@@ -13,7 +13,7 @@ describe('test calendar component', () => {
   })
 
   it('render time pannel', () => {
-    const { container } = render(<Calendar />)
+    const { container } = render(<Calendar showTime={true} />)
     const ele = container.querySelector('input')!
     fireEvent.click(ele)
     const time = container.querySelector('.nc-time-toggle')!
@@ -22,7 +22,12 @@ describe('test calendar component', () => {
   })
 
   it('increase hour', () => {
-    const { container } = render(<Calendar initialValue={dayjs('01/01/2024 12:01:01 PM')} />)
+    const { container } = render(
+      <Calendar
+        initialValue={dayjs('01/01/2024 12:01:01 PM')}
+        showTime={true}
+      />,
+    )
     const ele = container.querySelector('input')!
     fireEvent.click(ele)
     const time = container.querySelector('.nc-time-toggle')!
@@ -33,7 +38,12 @@ describe('test calendar component', () => {
   })
 
   it('decrease hour', () => {
-    const { container } = render(<Calendar initialValue={dayjs('01/01/2024 12:01:01 PM')} />)
+    const { container } = render(
+      <Calendar
+        initialValue={dayjs('01/01/2024 12:01:01 PM')}
+        showTime={true}
+      />,
+    )
     const ele = container.querySelector('input')!
     fireEvent.click(ele)
     const time = container.querySelector('.nc-time-toggle')!

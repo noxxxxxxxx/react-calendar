@@ -9,6 +9,7 @@ import localizedFormat from 'dayjs/plugin/localizedFormat'
 import utc from 'dayjs/plugin/utc'
 import { useEffect, useState } from 'react'
 import { DateTime, DynamicType, Type } from './components/datetime'
+import Calendar, { ViewMode } from './lib'
 // import { ViewMode } from './types'
 // import { Calendar, ViewMode } from './react-canendar.js'
 dayjs.extend(utc)
@@ -64,6 +65,16 @@ function Demo() {
     <>
       <App>
         <div>
+          <Calendar
+            // value={value[0]}
+            onChange={(v) => {
+              console.log(v)
+            }}
+            initialViewMode={ViewMode.Year}
+            // onClose={(v) => console.log(v, 'close')}
+          />
+        </div>
+        <div>
           <DateTime
             sortBy={DateGranularityValue.Minute}
             timezoneOffset={undefined}
@@ -72,7 +83,7 @@ function Demo() {
             format="YYYY/MM/DD" // 影响全局的格式化
             startDateDiff={1}
             endDateDiff={1}
-            dynamicType={DynamicType.last30Days} // 第一优先级
+            dynamicType={DynamicType.last7Days} // 第一优先级
             defaultOpen={false}
             afterConfirm={onDateChange}
             afterCancel={onDateCancel}
